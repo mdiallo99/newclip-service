@@ -1,0 +1,332 @@
+{
+  "resultatQueryWS": {
+    "colonne": [
+      "Libellé",
+      "Statut de la boîte",
+      "Code Client",
+      "Raison sociale client"
+    ],
+    "ligneResultatWS": [
+      {
+        "valeur": [
+          "BOITE ACTIV S N°040",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "BOITE FOOT ANC STER N°163",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "BOITE FOOT ANC STER N°164",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "BOITE FOOT LARGE SCREWS N°010",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "BOITE FOOT LARGE SCREWS N°042",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "BOITE FOOT LARGE SCREWS N°043",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "BOITE FOOT LARGE SCREWS N°044",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "BOITE FOOT LARGE SCREWS N°045",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "BOITE FOOT MICA N°005",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "BOITE FOOT MICA N°008",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "Boite FOOT ANC STER N°007",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "Boite FOOT ANC STER N°061",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "Boite HANDMOTION ANC STER N°022",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "Boite HANDMOTION ANC STER N°023",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "IMPLANTS ACTIV S N°040",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "IMPLANTS FOOT LARGE SCREWS N°007",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "IMPLANTS FOOT MICA N°006",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "IMPLANTS FOOT STER N°067",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "IMPLANTS FOOT STER N°103",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "IMPLANTS HANDMOTION N°006",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT ABLATION FOOT/HANDMOTION N°014",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT ABLATION GROS FRAGMENT N°016",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT ABLATION PETIT FRAGMENT N°029",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT ABLATION PETIT FRAGMENT N°111",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT ACTIV ANKLE N°002",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT ACTIV FUSE N°005",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT AMS N°025",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT FOOT NON STER N°048",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT FOOT NON STER N°074",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT FOOT NON STER N°075",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT FOREARM NON STER N°027",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT INITIAL A N°045",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT INITIAL F MTP N°003",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT INITIAL R XPERT 2.4 N°021",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT MTP NON STER N°001",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT MTP NON STER N°004 - KIT FPS",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT PLP N°002",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "KIT XPERT WRIST 2.4 N°014",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "OPTION ACTIV PSI N°058",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      },
+      {
+        "valeur": [
+          "OPTION ACTIV PSI N°064",
+          "En dépôt",
+          "C0000204",
+          "CLINIQUE JUGE"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+@startuml
+  entity "User" as User {
+        *user_id: number <<PK>>
+        --
+        *company_id: number <<FK>>
+        *role_id: number <<FK>>
+        firstName: Varchar(50)
+        lastName: Varchar(100)
+        email: Varchar(50)
+        password: Varchar(10)
+
+  }
+
+  entity "Company" as Company{
+        *company_id: number <<PK>>
+        --
+        *address_id: number <<FK>>
+        name: Varchar(100)
+  }
+
+  entity "Address" as Address {
+        *address_id: number <<PK>>
+        --
+        streetNumber: number
+        streetName: Varchar(100)
+        postalCode: number
+        town: Varchar(50)
+        country: Varchar(50)
+  }
+
+   entity "Role" as Role{
+        *roleId: number<<PK>>
+        --
+        value: Varchar(20)
+   }
+
+   entity "UserRole" as UserRole{
+        *user_id: number <<FK>>
+        *roleId: number <<FK>>
+   }
+  Company "1" *-- "1" Address: has
+  User "1" *-- "*" Company: Belongs to
+  User "[1..n]" *-- "[1..1]" UserRole: has
+  UserRole "[1..1]" *-- "[1..1]" Role: has
+@enduml

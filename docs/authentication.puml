@@ -1,0 +1,116 @@
+@startuml
+package model{
+
+  interface UserInterface{
+            getId(): UUID
+            getFirstName(): String
+            getLastName(): String
+            getStructure(): Structure
+            getEmail(): String
+            getPassword(): String
+            getRole(): RoleValue
+            signIn(): void
+            signOut(): void
+
+            setFirstName(newFirstName: String): void
+            setLastName(newLastName: String): void
+            setStructure(newStructure: Structure): void
+            setEmail(newEmail: String): void
+            setPassword(newPassword: String): void
+            setRole(newRole: Role): void
+
+            connect(email: String, password: String): void
+            disconnect(): void
+  }
+
+  abstract class User{
+        id: UUID
+        firstName: String
+        lastName: String
+        email: String
+        password: String
+        role: RoleValue
+        structure: Structure
+
+        User(firstName: String, lastName: String, structure: Structure , role: RoleValue, email: String, password: String)
+  }
+
+    class Client{
+          Client(firstName: String, lastName: String, structure: Structure, email: String, password: String, role: RoleValue)
+
+          makeRegularizationForm(): void
+    }
+
+    class Admin{
+
+         Admin(firstName: String, lastName: String, structure: Structure, email: String, password: String, role: RoleValue)
+
+         addUser(): void
+         addStructure(): void
+
+         deleteUser(user: User): void
+         deleteStructure(structure: Structure): void
+         setStructure(structure: Structure): void
+         getUsersByStructure(structure: Structure): User
+    }
+
+    class Structure{
+          id: UUID
+          name: String
+          address: Address
+          clients: Set<User>
+
+          getId(): UUID
+          getName(): String
+          getLocation(): String
+          getUsers(): Set<User>
+          getUserById(UserId: UUID): User
+          setName(newName: String): void
+          setLocation(newLocation: String): void
+    }
+
+    class Address {
+        streetNumber: Integer
+        streetName: String
+        postalCode: Integer
+        town: String
+        country: String
+
+        getStreetNumber(): Integer
+        getStreetName(): String
+        getPostalCode(): Integer
+        getTown(): String
+        getCountry(): String
+        toString(): String
+
+        setStreetNumber(streetNumber: String): void
+        setStreetName(streetName: String): void
+        setPostalCode(postalCode: Integer): void
+        setTown(town: String): void
+        setCountry(country: String): void
+    }
+
+    class Role{
+        id : Long
+        value : RoleValue
+
+        getId(): Long
+        getValue(): RoleValue
+
+        setId(newId: Long): void
+        setValue(newRole: RoleValue): void
+    }
+    enum RoleValue{
+        ADMIN, DOCTOR, DISTRIBUTOR
+    }
+
+    UserInterface <|.. User
+    User <|-- Admin
+    User <|-- Client
+    Role "1" *-- User: has
+    Structure "1" *-- "*" User: belongs to
+    Address "1" *-- "1" Structure: has
+    RoleValue "1" *-- "1" Role: hasValue
+}
+@enduml
+

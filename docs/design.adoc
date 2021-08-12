@@ -1,0 +1,12 @@
+===== List of components
+Profile, Admin, Client, Structure
+
+===== UserInterface
+ This Iterface represent a user, it can be implemented by Profile
+
+====== Client
+ A Client can be one of two types: Doctor or Distributor
+ They both has a fist name, last name, company, role etc...
+
+====== Structure
+ A company has an id, name, location

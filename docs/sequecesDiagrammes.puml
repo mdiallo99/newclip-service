@@ -1,0 +1,22 @@
+@startuml
+
+title Data Flow Handler
+actor Client
+entity UserInterface
+entity Server #red
+database Database
+Client -> UserInterface: User authentication
+UserInterface -> Server: Authentication Request
+Server -> Database: Log transaction
+Database -> Server: Log response
+Server -> Client: Authentication Response
+
+Client -> UserInterface: Make a regularization form
+UserInterface -> Server: Transform and send document
+Server -> Server: Generate a pdf file of regulation form
+Server -> Database: insert data in the database
+Server -> UserInterface: Send the document
+Server -> Client: Send an email
+
+Database -> Database: Update
+@enduml

@@ -1,0 +1,22 @@
+=== Domain Analysis
+====== Profile Authentication
+ The client make an authentication on a form: This part should be managed by "keycloack"
+
+====== Make a regulation form
+ After authentication, the user make a regulation form by using data available in the ERP
+
+====== Data Transformation to JSON
+ The document must be transformed to JSON format
+
+====== Web service role
+ A web service will be the bridge between Client/Server
+
+====== Send an email
+ The server must send email to the Profile
+
+====== Repercussions in the ERP
+ The ERP will be updated after client's transactions
+- Save the document (regulation form)
+- Client's references
+- Regulation form content
+- etc...
