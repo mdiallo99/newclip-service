@@ -179,7 +179,8 @@ public class JsonParserHelper {
                                     object.get("articleStatus").toString(),
                                     object.get("codeClient").toString(),
                                     object.get("socialReason").toString(),
-                                    object.get("name").toString()
+//                                    object.get("name").toString()
+                    null
                                )
             );
             System.out.println(object);

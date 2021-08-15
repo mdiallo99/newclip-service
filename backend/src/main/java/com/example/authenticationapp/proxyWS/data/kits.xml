@@ -1,4 +1,247 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <resultatQueryWS>
     <colonne>Libellé</colonne>
-    <colonne>Statut de la boîte</colonne><colonne>Code Client</colonne><colonne>Raison sociale client</colonne><ligneResultatWS><valeur>BOITE ACTIV S N°040</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>BOITE FOOT ANC STER N°163</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>BOITE FOOT ANC STER N°164</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>BOITE FOOT LARGE SCREWS N°010</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>BOITE FOOT LARGE SCREWS N°042</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>BOITE FOOT LARGE SCREWS N°043</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>BOITE FOOT LARGE SCREWS N°044</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>BOITE FOOT LARGE SCREWS N°045</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>BOITE FOOT MICA N°005</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>BOITE FOOT MICA N°008</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>Boite FOOT ANC STER N°007</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>Boite FOOT ANC STER N°061</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>Boite HANDMOTION ANC STER N°022</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>Boite HANDMOTION ANC STER N°023</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>IMPLANTS ACTIV S N°040</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>IMPLANTS FOOT LARGE SCREWS N°007</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>IMPLANTS FOOT MICA N°006</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>IMPLANTS FOOT STER N°067</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>IMPLANTS FOOT STER N°103</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>IMPLANTS HANDMOTION N°006</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT ABLATION FOOT/HANDMOTION N°014</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT ABLATION GROS FRAGMENT N°016</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT ABLATION PETIT FRAGMENT N°029</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT ABLATION PETIT FRAGMENT N°111</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT ACTIV ANKLE N°002</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT ACTIV FUSE N°005</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT AMS N°025</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT FOOT NON STER N°048</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT FOOT NON STER N°074</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT FOOT NON STER N°075</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT FOREARM NON STER N°027</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT INITIAL A N°045</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT INITIAL F MTP N°003</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT INITIAL R XPERT 2.4 N°021</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT MTP NON STER N°001</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT MTP NON STER N°004 - KIT FPS</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT PLP N°002</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>KIT XPERT WRIST 2.4 N°014</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>OPTION ACTIV PSI N°058</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS><ligneResultatWS><valeur>OPTION ACTIV PSI N°064</valeur><valeur>En dépôt</valeur><valeur>C0000204</valeur><valeur>CLINIQUE JUGE</valeur></ligneResultatWS></resultatQueryWS>
+    <colonne>Statut de la boîte</colonne>
+    <colonne>Code Client</colonne>
+    <colonne>Raison sociale client</colonne>
+    <ligneResultatWS>
+        <valeur>BOITE ACTIV S N°040</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>BOITE FOOT ANC STER N°163</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>BOITE FOOT ANC STER N°164</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>BOITE FOOT LARGE SCREWS N°010</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>BOITE FOOT LARGE SCREWS N°042</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>BOITE FOOT LARGE SCREWS N°043</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>BOITE FOOT LARGE SCREWS N°044</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>BOITE FOOT LARGE SCREWS N°045</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>BOITE FOOT MICA N°005</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>BOITE FOOT MICA N°008</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>Boite FOOT ANC STER N°007</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>Boite FOOT ANC STER N°061</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>Boite HANDMOTION ANC STER N°022</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>Boite HANDMOTION ANC STER N°023</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>IMPLANTS ACTIV S N°040</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>IMPLANTS FOOT LARGE SCREWS N°007</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>IMPLANTS FOOT MICA N°006</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>IMPLANTS FOOT STER N°067</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>IMPLANTS FOOT STER N°103</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>IMPLANTS HANDMOTION N°006</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT ABLATION FOOT/HANDMOTION N°014</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT ABLATION GROS FRAGMENT N°016</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT ABLATION PETIT FRAGMENT N°029</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT ABLATION PETIT FRAGMENT N°111</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT ACTIV ANKLE N°002</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT ACTIV FUSE N°005</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT AMS N°025</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT FOOT NON STER N°048</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT FOOT NON STER N°074</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT FOOT NON STER N°075</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT FOREARM NON STER N°027</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT INITIAL A N°045</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT INITIAL F MTP N°003</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT INITIAL R XPERT 2.4 N°021</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT MTP NON STER N°001</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT MTP NON STER N°004 - KIT FPS</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT PLP N°002</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>KIT XPERT WRIST 2.4 N°014</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>OPTION ACTIV PSI N°058</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+    <ligneResultatWS>
+        <valeur>OPTION ACTIV PSI N°064</valeur>
+        <valeur>En dépôt</valeur>
+        <valeur>C0000204</valeur>
+        <valeur>CLINIQUE JUGE</valeur>
+    </ligneResultatWS>
+</resultatQueryWS>

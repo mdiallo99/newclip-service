@@ -35,6 +35,8 @@ public class Kit {
         this.articles = new HashSet<>();
     }
 
+    public Kit(){}
+
     public String getLabel() {
         return label;
     }

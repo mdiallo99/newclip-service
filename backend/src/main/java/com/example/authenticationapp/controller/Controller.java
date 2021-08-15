@@ -33,6 +33,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.SecurityContext;
 import java.io.*;
+import java.net.URL;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.Principal;
@@ -273,7 +274,8 @@ public class Controller {
     @Operation(security = {@SecurityRequirement(name = BEARER_KEY)})
     @RequestMapping(value = ADD_SYLOB_ARTICLE_ENDPOINT, method = {RequestMethod.POST}, produces = { MediaType.APPLICATION_PDF_VALUE})
     public Document addArticlesInVoucher(@RequestBody Object object, HttpServletResponse response) throws IOException, ParseException, DocumentException, NoSuchAlgorithmException, KeyManagementException {
-       SylobRequests.turnOnSslChecking();
+      // SylobRequests.turnOnSslChecking();
+
         Voucher voucher = (object != null) ? appServices.addArticlesInVoucher(parseAndCreateArticlesForVoucher(object)): null;
 //        ByteArrayInputStream result = (voucher != null) ? PDFHelper.voucherReport(voucher) : null;
         var headers = new HttpHeaders();
@@ -289,7 +291,10 @@ public class Controller {
 //        Document document = helper.export(response);
 //        System.out.println(document.toString());
 //        helper.sendEmail();
+//        URL classURL  = this.getClass().getResource("com.sun.mail.util.TraceInputStream");
+//        System.out.println("resource : "+classURL.getFile());
         helper.email();
+
 
 //        String from = "mdiallo@gmail.com";
 //        String to = "dialloakh@gmail.com";

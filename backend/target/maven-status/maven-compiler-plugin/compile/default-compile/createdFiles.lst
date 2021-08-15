@@ -31,6 +31,7 @@ com\example\authenticationapp\config\KeycloakAdminConfig.class
 com\example\authenticationapp\repository\PhotoRepository.class
 com\example\authenticationapp\controller\Controller.class
 com\example\authenticationapp\repository\AddressRepository.class
+com\example\authenticationapp\proxyWS\ObjectHandler$1.class
 com\example\authenticationapp\utils\PDFHelper.class
 com\example\authenticationapp\utils\SylobRequests$5.class
 com\example\authenticationapp\config\ErrorAttributesConfig.class
@@ -41,6 +42,7 @@ com\example\authenticationapp\model\user\User.class
 com\example\authenticationapp\emailManagement\MailService.class
 com\example\authenticationapp\utils\SylobRequests$2.class
 com\example\authenticationapp\model\Company.class
+com\example\authenticationapp\proxyWS\ObjectHandler.class
 com\example\authenticationapp\model\sylobe\Article.class
 com\example\authenticationapp\model\sylobe\Photo.class
 com\example\authenticationapp\controller\exceptions\UserNotFoundException.class
