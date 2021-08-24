@@ -1,6 +1,5 @@
 package com.example.authenticationapp.proxyWS;
 
-import com.example.authenticationapp.model.sylobe.Article;
 import com.example.authenticationapp.model.sylobe.Kit;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
@@ -11,13 +10,13 @@ public class KitProxy extends DefaultHandler {
     private final String VALUE = "valeur";
 
     private Kit kit = null;
-    private StringBuilder builder;
+    private StringBuilder builder = null;
     private int index;
     private KitDocumentContent content;
 
     @Override
     public void characters(char[] ch, int start, int length) {
-        if(kit == null){
+        if(builder == null){
             builder = new StringBuilder();
         }else {
             builder.append(ch, start, length);
@@ -56,17 +55,19 @@ public class KitProxy extends DefaultHandler {
                 break;
 
             case VALUE:
-                if (index == 1){
-                    kit.setLabel(builder.toString());
-                }
-                if (index == 2){
-                    kit.setKitStatus(builder.toString());
-                }
-                if (index == 3){
-                    kit.setClientCode(builder.toString());
-                }
-                if (index == 4){
-                    kit.setSocialReason(builder.toString());
+                switch (index) {
+                    case 1:
+                        kit.setLabel(builder.toString());
+                        break;
+                    case 2:
+                        kit.setKitStatus(builder.toString());
+                        break;
+                    case 3:
+                        kit.setClientCode(builder.toString());
+                        break;
+                    case 4:
+                        kit.setSocialReason(builder.toString());
+                        break;
                 }
 
                 break;

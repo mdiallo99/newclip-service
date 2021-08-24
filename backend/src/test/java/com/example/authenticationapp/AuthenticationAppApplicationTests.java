@@ -41,7 +41,7 @@ class AuthenticationAppApplicationTests {
 
 //		ArticleProxy proxy = new ArticleProxy();
 //		parser.parse("C:\\Users\\mdiallo\\Desktop\\newclip-service\\backend\\src\\main\\java\\com\\example\\authenticationapp\\proxyWS\\data\\articles.xml", proxy);
-	//	System.out.println(proxy.getContent().getArticles());
+//		System.out.println(proxy.getContent().getArticles().size());
 
 		KitProxy proxy = new KitProxy();
 		parser.parse("C:\\Users\\mdiallo\\Desktop\\newclip-service\\backend\\src\\main\\java\\com\\example\\authenticationapp\\proxyWS\\data\\kits.xml", proxy);

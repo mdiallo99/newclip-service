@@ -11,12 +11,12 @@ public class ArticleProxy extends DefaultHandler {
 
     private ArticleDocumentContent content = null;
     private Article article = null;
-    private StringBuilder builder;
+    private StringBuilder builder = null;
     private int index;
 
     @Override
     public void characters(char[] ch, int start, int length) {
-        if(article == null){
+        if(builder == null){
             builder = new StringBuilder();
         }else {
             builder.append(ch, start, length);
@@ -50,34 +50,34 @@ public class ArticleProxy extends DefaultHandler {
                     break;
 
                 case VALUE:
-                    if(index == 1){
-                        article.setArticleCode(builder.toString());
-                    }
-                    if(index == 2){
-                        article.setNumber(builder.toString());
-                    }
-                    if(index == 3){
-                        article.setIndex(builder.toString());
-                    }
-                    if(index == 4){
-                        article.setQuantity(Double.parseDouble(builder.toString()));
-                    }
-                    if(index == 5){
-                        article.setValidityDate(builder.toString());
-                    }
-                    if(index == 6){
-                        article.setLabel(builder.toString());
-                    }
-                    if(index == 7){
-                        article.setArticleStatus(builder.toString());
-                    }
-                    if(index == 8){
-                        article.setCodeClient(builder.toString());
-                    }
-                    if(index == 9){
-                        article.setSocialReason(builder.toString());
-                    }
-
+                        switch (index){
+                            case 1:
+                                article.setArticleCode(builder.toString());
+                                break;
+                            case 2:
+                                article.setNumber(builder.toString());
+                                break;
+                            case 3:
+                                article.setIndex(builder.toString());
+                                break;
+                            case 4:
+                                article.setQuantity(Double.parseDouble(builder.toString()));
+                                break;
+                            case 5:
+                                article.setValidityDate(builder.toString());
+                                break;
+                            case 6:
+                                article.setLabel(builder.toString());
+                                break;
+                            case 7:
+                                article.setArticleStatus(builder.toString());
+                                break;
+                            case 8:
+                                article.setCodeClient(builder.toString());
+                            case 9:
+                                article.setSocialReason(builder.toString());
+                                break;
+                        }
                     break;
             }
     }
