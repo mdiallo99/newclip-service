@@ -16,6 +16,7 @@ import AddCompany from "./components/company/AddCompany";
 import AddUser from "./components/user/AddUser";
 import KitContent from "./components/home/KitContent";
 import {Redirect} from "react-router";
+import React from "react";
 
 /**
  * The user token. it's used in several pages
@@ -27,8 +28,9 @@ let userToken = null;
  * @type {null}
  */
 let keycloak = null;
+let isLoading = true;
 
-function App() {
+const  App = () => {
     /**
      * Keycloak instance
      * @type {Keycloak.KeycloakInstance}
@@ -52,9 +54,10 @@ function App() {
      * @param event
      * @returns {Promise<void>}
      */
-    const handleOnEvent = async (event) => {
+    const handleOnEvent = async (event, error) => {
         if (event === 'onAuthSuccess') {
             if (keycloak.authenticated) {
+                isLoading = false;
                 console.log("Token: ", keycloak.token);
                 userToken = keycloak.token;
                 let response = await APP_API.getUserMe(keycloak.token)
@@ -78,11 +81,6 @@ function App() {
         </Dimmer>
     )
 
-    let activeMenu = null;
-    const setActiveMenu = (newMenu) => {
-        activeMenu = newMenu;
-    }
-
     return (
         <ReactKeycloakProvider
             authClient={keycloak}
@@ -95,21 +93,22 @@ function App() {
                 <section>
                     <Switch>
                         <PrivateRoute path='/home' component={Home}/>
-                        <PrivateRoute path='/kitContent' component={KitContent}/>
                         <PrivateRoute path='/profile' component={Profile}/>
                         <PrivateRoute path='/userList' component={UserList}/>
                         <PrivateRoute path='/companyList' component={CompanyList}/>
                         <PrivateRoute path='/addressList' component={AddressList}/>
+                        <PrivateRoute path='/kitContent/:kitLabel' component={KitContent}/>
                         <PrivateRoute path='/addAddress' component={AddAddress}/>
                         <PrivateRoute path='/addCompany' component={AddCompany}/>
                         <PrivateRoute path='/addUser' component={AddUser}/>
                         <Redirect to="/profile"/>
                     </Switch>
+                    <footer>
+
+                    </footer>
                 </section>
-                <footer></footer>
             </Router>
-        </ReactKeycloakProvider>
-    );
+        </ReactKeycloakProvider>)
 }
 
 export {App, userToken, keycloak};

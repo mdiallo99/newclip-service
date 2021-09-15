@@ -63,6 +63,7 @@ public class Article {
     public Article(){
 
     }
+
     public String getArticleCode() {
         return articleCode;
     }

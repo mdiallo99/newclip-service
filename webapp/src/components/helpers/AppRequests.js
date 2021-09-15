@@ -42,6 +42,7 @@ const saveUserMe = (token, user) => {
  * @returns {Promise<AxiosResponse<any>>}
  */
 const getUserList = (token) => {
+
     return instance.get(APP_ENDPOINTS.USER_LIST_ENDPOINT, {
         headers: {'Authorization': bearerAuth(token)}
     })

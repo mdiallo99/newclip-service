@@ -35,7 +35,9 @@ public class Kit {
         this.articles = new HashSet<>();
     }
 
-    public Kit(){}
+    public Kit(){
+
+    }
 
     public String getLabel() {
         return label;
@@ -71,10 +73,6 @@ public class Kit {
 
     public void setSocialReason(String socialReason) {
         this.socialReason = socialReason;
-    }
-
-    public void addArticle(Article article){
-        this.articles.add(article);
     }
 
     public void setArticles(Set<Article> articles) {

@@ -107,9 +107,10 @@ public class AppServicesImpl implements AppServices {
     }
 
     @Override
-    public Voucher addArticlesInVoucher(Set<Article> article) {
-        Voucher voucher = new Voucher("Description");
+    public Voucher addArticlesInVoucher(Set<Article> article, User editor) {
+        Voucher voucher = new Voucher();
         voucher.setArticles(article);
+        voucher.setEditor(editor);
         return voucherRepository.save(voucher);
     }
 

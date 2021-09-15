@@ -1,22 +1,44 @@
+
 @startuml
 
-title Data Flow Handler
-actor Client
-entity UserInterface
-entity Server #red
-database Database
-Client -> UserInterface: User authentication
-UserInterface -> Server: Authentication Request
-Server -> Database: Log transaction
-Database -> Server: Log response
-Server -> Client: Authentication Response
+title Regularization Voucher App
+actor User
+entity Frontend
+entity Keycloak #red
+entity Backend #orange
+entity Sylob #green
+database Base
 
-Client -> UserInterface: Make a regularization form
-UserInterface -> Server: Transform and send document
-Server -> Server: Generate a pdf file of regulation form
-Server -> Database: insert data in the database
-Server -> UserInterface: Send the document
-Server -> Client: Send an email
+' AUTHENTICATION PROCESS
 
-Database -> Database: Update
+User -> Frontend:  Type user name and password
+Frontend -> Keycloak: Authentication Request
+Keycloak -> Keycloak: Log transaction
+Keycloak -> User: Authentication Response
+Keycloak -> Backend: Give an access to user
+
+'VIEW AVAILABLE KITS
+
+User -> Frontend: Consult available kits
+Frontend -> Backend: Sends the request
+Backend -> Sylob: Executes the request (through the Proxy)
+Sylob -> Backend: Sends Kits for the user hospital
+Backend -> Frontend: Sends data
+Frontend -> Frontend: Displays kits for user
+
+'VIEW A SPECIFIC KIT CONTENT
+
+User -> Frontend: Consults a specific kit content
+Frontend -> Backend: Sends the request
+Backend -> Sylob: Executes request (through the Proxy)
+Sylob -> Backend: Sends articles for the selected kit
+Backend -> Frontend: Sends data
+Frontend -> Frontend: Displays the result
+
+' MAKING A REGULARIZATION VOUCHER
+
+User -> Frontend: Selects one or several articles
+Backend -> Base: Save voucher (Articles, not the pdf file)
+Frontend -> Backend: Make a pdf file with selected articles
+Backend -> Backend: Sends email with the pdf file
 @enduml

@@ -9,258 +9,125 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import javax.mail.util.ByteArrayDataSource;
 import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Properties;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class PDFHelper {
 
-   // private static final Logger logger = LoggerFactory.getLogger(PDFHelper.class);
+    /**
+     * This class create a pdf file for a Voucher
+     */
+    private static final Logger logger = LoggerFactory.getLogger(PDFHelper.class);
     private Voucher voucher;
-  //  private final   Document document = new Document(PageSize.A4);
+    private final   Document document = new Document(PageSize.A4);
 
-//    @Autowired
-//    private static JavaMailSender mailSender;
 
     public PDFHelper(Voucher voucher) {
         this.voucher = voucher;
     }
 
+    public void export(HttpServletResponse response) throws DocumentException, IOException {
+        Document document = new Document(PageSize.A4);
 
-    public void email() {
-        String smtpHost = "smtp.gmail.com"; //replace this with a valid host
-        int smtpPort = 587; //replace this with a valid port
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        OutputStream stream = new FileOutputStream("C:\\Users\\mdiallo\\Desktop\\regularization-form-bis\\backend\\src\\main\\java\\com\\example\\authenticationapp\\proxyWS\\data\\voucher.pdf");
+        PdfWriter.getInstance(document, stream);
 
-        String sender = "mdiallopro14@gmail.com"; //replace this with a valid sender email address
-        String recipient = "dialloakh@gmail.com"; //replace this with a valid recipient email address
-        String content = "mail content"; //this will be the text of the email
-        String subject = "mail subject"; //this will be the subject of the email
-
-        Properties properties = new Properties();
-        properties.put("mail.smtp.host", smtpHost);
-        properties.put("mail.smtp.port", smtpPort);
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.user", "mdiallopro14@gmail.com");
-       // Session session = Session.getDefaultInstance(properties);
-
-        ByteArrayOutputStream outputStream = null;
-
-        try {
-            //construct the text body part
-            MimeBodyPart textBodyPart = new MimeBodyPart();
-            textBodyPart.setText(content);
-
-            //now write the PDF content to the output stream
-            outputStream = new ByteArrayOutputStream();
-            writePdf(outputStream);
-            byte[] bytes = outputStream.toByteArray();
-
-
-            //construct the pdf body part
-            DataSource dataSource = new ByteArrayDataSource(bytes, "application/pdf");
-            MimeBodyPart pdfBodyPart = new MimeBodyPart();
-            pdfBodyPart.setDataHandler(new DataHandler(dataSource));
-            pdfBodyPart.setFileName("test.pdf");
-
-            //construct the mime multi part
-            MimeMultipart mimeMultipart = new MimeMultipart();
-            mimeMultipart.addBodyPart(textBodyPart);
-            mimeMultipart.addBodyPart(pdfBodyPart);
-
-            //create the sender/recipient addresses
-            InternetAddress iaSender = new InternetAddress(sender);
-            InternetAddress iaRecipient = new InternetAddress(recipient);
-
-            //construct the mime message
-
-          //  SmtpAuthenticator authenticator = new SmtpAuthenticator();
-
-            Message mimeMessage = new MimeMessage(Session.getDefaultInstance(properties,
-                    new Authenticator() {
-                        @Override
-                        protected PasswordAuthentication getPasswordAuthentication() {
-                            return new PasswordAuthentication("mdiallopro14@gmail.com", "DialloPro/14");
-                        }
-                    }
-            ));
-            mimeMessage.setFrom(iaSender);
-            mimeMessage.setSubject(subject);
-            mimeMessage.setRecipient(Message.RecipientType.TO, iaRecipient);
-            mimeMessage.setContent(mimeMultipart);
-
-            //send off the email
-//            Transport transport = session.getTransport("smtp");
-//            transport.connect("mdiallopro14@gmail.com", "DialloPro/14");
-            Transport.send(mimeMessage);
-               System.out.println( ", to " + recipient +
-                    "; server = " + smtpHost + ", port = " + smtpPort);
-        } catch(Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            //clean off
-            if(outputStream != null) {
-                try {
-                    outputStream.close();
-                }
-                catch(Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
-    }
-
-    public void writePdf(OutputStream outputStream) throws Exception {
-        Document document = new Document();
-        PdfWriter.getInstance(document, outputStream);
         document.open();
-        Paragraph paragraph = new Paragraph();
-        paragraph.add(new Chunk("Test for the pdf!"));
-        document.add(paragraph);
+        Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+        font.setSize(20);
+        font.setColor(BaseColor.RED);
+
+        Image logo = Image.getInstance("C:\\Users\\mdiallo\\Desktop\\regularization-form-bis\\backend\\src\\main\\java\\com\\example\\authenticationapp\\proxyWS\\data\\nct.PNG");
+        logo.setAlignment(3);
+
+        Image range = Image.getInstance("C:\\Users\\mdiallo\\Desktop\\regularization-form-bis\\backend\\src\\main\\java\\com\\example\\authenticationapp\\proxyWS\\data\\gamme.png");
+        range.setAlignment(3);
+
+
+        DateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+        Paragraph date = new Paragraph("DATE : "+currentDateTime+"\n");
+        date.setAlignment(Paragraph.ALIGN_CENTER);
+
+        Paragraph company = new Paragraph("ETABLISSEMENT : "+voucher.getEditor().getCompany().getSocialReason()+"\n");
+        company.setAlignment(Paragraph.ALIGN_CENTER);
+
+        Paragraph editor = new Paragraph("Chirurgien: "+voucher.getEditor().getFirstName()+" "+voucher.getEditor().getLastName()+"\n \n");
+        editor.setAlignment(Paragraph.ALIGN_CENTER);
+
+
+
+        PdfPTable table = new PdfPTable(4);
+        table.setWidthPercentage(100f);
+        table.setWidths(new float[] {1.5f, 2.5f, 0.5f, 0.5f});
+        table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
+
+
+        writeTableHeader(table);
+        writeTableData(table);
+
+
+        document.add(logo);
+        document.add(range);
+        document.add(date);
+        document.add(company);
+        document.add(editor);
+
+        document.add(table);
+
         document.close();
+
     }
-//
-//    public Document getDocument() {
-//        return document;
-//    }
-//
-//
-//    public void sendEmail(){
-//        String from = "mdiallopro14@gmail.com";
-//        String to = "dialloakh@gmail.com";
-//
-//        SimpleMailMessage message = new SimpleMailMessage();
-//
-//        message.setFrom(from);
-//        message.setTo(to);
-//        message.setSubject("This is a plain text email");
-//        message.setText("Hello guys! This is a plain text email.");
-//
-////        mailSender.send(message);
-//    }
-//
-//    public static ByteArrayInputStream voucherReport(Voucher voucher) throws DocumentException {
-//        Document document = new Document();
-//
-//        ByteArrayOutputStream out = new ByteArrayOutputStream();
-//        PdfPTable table = new PdfPTable(3);
-//        table.setWidthPercentage(60);
-//        table.setWidths(new int[]{3, 3, 3});
-//
-//        Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
-//
-//        PdfPCell hcell;
-//        hcell = new PdfPCell(new Phrase("Name", headFont));
-//        hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-//        table.addCell(hcell);
-//
-//        hcell = new PdfPCell(new Phrase("Label", headFont));
-//        hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-//        table.addCell(hcell);
-//
-//        hcell = new PdfPCell(new Phrase("SocialReason", headFont));
-//        hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-//        table.addCell(hcell);
-//
-//        for(Article article: voucher.getArticles()){
-//            PdfPCell cell;
-//
-//            cell = new PdfPCell(new Phrase(article.getName()));
-//            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-//            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-//            table.addCell(cell);
-//
-//            cell = new PdfPCell(new Phrase(article.getLabel()));
-//            cell.setPaddingLeft(5);
-//            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-//            cell.setHorizontalAlignment(Element.ALIGN_LEFT);
-//            table.addCell(cell);
-//
-//            cell = new PdfPCell(new Phrase(String.valueOf(article.getSocialReason())));
-//            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-//            cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
-//            cell.setPaddingRight(5);
-//            table.addCell(cell);
-//        }
-//
-//        PdfWriter.getInstance(document, out);
-//        document.open();
-//        document.add(table);
-//
-//        document.close();
-//
-//        return new ByteArrayInputStream(out.toByteArray());
-//    }
-//
-//    private void writeTableHeader(PdfPTable table) {
-//        PdfPCell cell = new PdfPCell();
-//        cell.setBackgroundColor(BaseColor.BLUE);
-//        cell.setPadding(5);
-//
-//        Font font = FontFactory.getFont(FontFactory.HELVETICA);
-//        font.setColor(BaseColor.WHITE);
-//
-//        cell.setPhrase(new Phrase("Référence", font));
-//
-//        table.addCell(cell);
-//
-//        cell.setPhrase(new Phrase("Numéro de lot", font));
-//        table.addCell(cell);
-//
-//        cell.setPhrase(new Phrase("Quantité", font));
-//        table.addCell(cell);
-//    }
-//
-//    private void writeTableData(PdfPTable table) {
-//        for (Article article : voucher.getArticles()) {
-//            table.addCell(article.getName());
-//            table.addCell(article.getNumber());
-//            table.addCell(String.valueOf(article.getQuantity()));
-//        }
-//    }
-//
-//    public Document export(HttpServletResponse response) throws DocumentException, IOException {
-//
-//        PdfWriter.getInstance(document, response.getOutputStream());
-//
-//        document.open();
-//        Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
-//        font.setSize(18);
-//        font.setColor(BaseColor.BLUE);
-//
-//        Paragraph p = new Paragraph("Bon de régularisation", font);
-//        p.setAlignment(Paragraph.ALIGN_CENTER);
-//
-//        document.add(p);
-//
-//        PdfPTable table = new PdfPTable(3);
-//        table.setWidthPercentage(100f);
-//        table.setWidths(new float[] {4f, 4f, 4f});
-//        table.setSpacingBefore(10);
-//
-//        writeTableHeader(table);
-//        writeTableData(table);
-//
-//        document.add(table);
-//
-//        document.close();
-//
-//        return document;
-//    }
+
+    private Article writeTableData(PdfPTable table) throws BadElementException, IOException {
+
+        Article a = null;
+        for (Article article : voucher.getArticles()) {
+
+            Image image = null;
+            try {
+                image = Image.getInstance("C:\\Users\\mdiallo\\Desktop\\regularization-form-bis\\webapp\\src\\images\\"+article.getArticleCode()+".png");
+            }catch (Exception e){
+                image = Image.getInstance("C:\\Users\\mdiallo\\Desktop\\regularization-form-bis\\backend\\src\\main\\java\\com\\example\\authenticationapp\\proxyWS\\data\\nct.PNG");
+            }
+            a = article;
+            table.addCell(image);
+            table.addCell(article.getArticleCode()+" \n"+article.getName());
+            table.addCell(article.getNumber());
+            table.addCell(String.valueOf(article.getQuantity()));
+        }
+        return  a;
+    }
+
+    private void writeTableHeader(PdfPTable table) {
+        PdfPCell cell = new PdfPCell();
+        cell.setBackgroundColor(BaseColor.RED);
+        cell.setPadding(5);
+
+        Font font = FontFactory.getFont(FontFactory.HELVETICA);
+        font.setColor(BaseColor.WHITE);
+
+        cell.setPhrase(new Phrase("Plaques", font));
+
+        table.addCell(cell);
+
+        cell.setPhrase(new Phrase("Référence", font));
+
+        table.addCell(cell);
+
+        cell.setPhrase(new Phrase("N° lot", font));
+        table.addCell(cell);
+
+        cell.setPhrase(new Phrase("Qté", font));
+        table.addCell(cell);
+    }
+
 }

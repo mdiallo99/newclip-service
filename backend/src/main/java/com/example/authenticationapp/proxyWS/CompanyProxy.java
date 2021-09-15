@@ -5,11 +5,11 @@ import org.json.simple.JSONObject;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class KitProxy extends DefaultHandler {
+public class CompanyProxy extends DefaultHandler {
 
     /**
      * This class helps us to parse the received from sylob request to JSON
-     * The request which returns KITS
+     * The request which returns COMPANIES (HOSPITALS)
      */
 
     private final String LINE_RES_WS = "ligneResultatWS";
@@ -55,16 +55,31 @@ public class KitProxy extends DefaultHandler {
             case VALUE:
                 switch (index) {
                     case 1:
-                        object.put("label", builder.toString());
+                        object.put("code", builder.toString());
                         break;
                     case 2:
-                        object.put("kitStatus", builder.toString());
+                        object.put("socialReason", builder.toString());
                         break;
                     case 3:
-                        object.put("clientCode", builder.toString());
+                        object.put("clientType", builder.toString());
                         break;
                     case 4:
-                        object.put("socialReason", builder.toString());
+                        object.put("label", builder.toString());
+                        break;
+                    case 5:
+                        object.put("countryCode", builder.toString());
+                        break;
+                    case 6:
+                        object.put("countryName", builder.toString());
+                        break;
+                    case 7:
+                        object.put("zipCode", builder.toString());
+                        break;
+                    case 8:
+                        object.put("city", builder.toString());
+                        break;
+                    case 9:
+                        object.put("recipient", builder.toString());
                         break;
                 }
 

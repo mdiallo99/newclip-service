@@ -65,7 +65,7 @@ public class KeycloakInitializer implements CommandLineRunner {
          */
         ClientRepresentation clientRepresentation = new ClientRepresentation();
         clientRepresentation.setClientId(CLIENT_ID);
-//        clientRepresentation.setDirectAccessGrantsEnabled(true);
+        clientRepresentation.setDirectAccessGrantsEnabled(true);
         clientRepresentation.setPublicClient(true);
         clientRepresentation.setRedirectUris(Collections.singletonList(REDIRECT_URL));
 

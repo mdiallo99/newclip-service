@@ -1,0 +1,194 @@
+@startuml
+package model{
+
+package user{
+  interface UserInterface{
+            + getId(): UUID
+            + getFirstName(): String
+            + getLastName(): String
+            + getStructure(): Company
+            + getEmail(): String
+            + getPassword(): String
+            + getRole(): String
+            + signIn(): void
+            + signOut(): void
+
+            + setFirstName(newFirstName: String): void
+            + setLastName(newLastName: String): void
+            + setStructure(newStructure: Structure): void
+            + setEmail(newEmail: String): void
+            + setPassword(newPassword: String): void
+            + setRole(newRole: String): void
+
+            + connect(email: String, password: String): void
+            + disconnect(): void
+  }
+
+  abstract class User{
+        - id: UUID
+        - firstName: String
+        - lastName: String
+        - email: String
+        - password: String
+        - role: String
+        - company: Company
+
+        + AllConstructors()
+        + AllGetters()
+        + AllSetters()
+        + toString()
+        + equals()
+  }
+
+    class Client{
+
+        + AllConstructors()
+        + AllGetters()
+        + AllSetters()
+        + toString()
+        + equals()
+    }
+
+    class Admin{
+
+        + AllConstructors()
+        + AllGetters()
+        + AllSetters()
+        + toString()
+        + equals()
+    }
+
+    class Company{
+          - id: UUID
+          - name: String
+          - address: Address
+
+         + AllConstructors()
+         + AllGetters()
+         + AllSetters()
+         + toString()
+         + equals()
+    }
+
+    class Address {
+        - streetNumber: Integer
+        - streetName: String
+        - zipCode: Integer
+        - city: String
+        - country: String
+
+        + AllConstructors()
+        + AllGetters()
+        + AllSetters()
+        + toString()
+        + equals()
+
+    }
+
+    UserInterface <|.. User
+    User <|-- Admin
+    User <|-- Client
+    Company "1" *-- "*" User: belongs to
+    Address "1" *-- "1" Company: has
+    }
+
+    package sylob {
+            class Article {
+                          - articleCode: String
+                          - number: String
+                          - index: String
+                          - quantity: String
+                          - validityDate: String
+                          - label: String
+                          - articleStatus: String
+                          - codeClient: String
+                          - socialReason: String
+                          - name: String
+
+                          + AllConstructors()
+                          + AllGetters()
+                          + AllSetters()
+                          + toString()
+                          + equals()
+            }
+
+            class Kit {
+
+                        - label: String
+                        - kitStatus: String
+                        - clientCode: String
+                        - socialReason: String
+                        - articles: Set<Article>
+
+                        + AllConstructors()
+                        + AllGetters()
+                        + AllSetters()
+                        + toString()
+                        + equals()
+
+            }
+
+            class Voucher {
+                    - d: UUID
+                    - articles: Set<Article>
+                    - editor: User
+
+                    + AllConstructors()
+                    + AllGetters()
+                    + AllSetters()
+                    + toString()
+                    + equals()
+            }
+
+            Article "1" --* "0..n" Kit
+
+            Voucher "1..n" --* "1" Article: has
+    }
+
+}
+
+package utils {
+        class JsonParserHelper {
+            + AllStaticsFunctions()
+        }
+
+        class SylobRequests {
+            + AllStaticsFunctions()
+        }
+}
+
+package proxyWS {
+    class ArticleProxy {
+    }
+    class CompanyProxy {
+    }
+    class KitProxy {
+    }
+
+    class WebServicesCall {
+
+    }
+
+    WebServicesCall "1" --* ArticleProxy: use
+    WebServicesCall "1" --* CompanyProxy: use
+    WebServicesCall "1" --* KitProxy: use
+
+    SylobRequests "1..n" --* WebServicesCall: call
+    JsonParserHelper "1..n" *-- WebServicesCall: receive
+}
+
+
+package controller {
+    class ProxyController {
+        + AllFunctions()
+    }
+
+    class BackendController {
+          + AllFunctions()
+    }
+
+    ProxyController "1..n" *-- BackendController: call
+}
+
+@enduml
+

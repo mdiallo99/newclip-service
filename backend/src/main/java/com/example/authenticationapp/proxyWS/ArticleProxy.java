@@ -1,18 +1,25 @@
 package com.example.authenticationapp.proxyWS;
 
-import com.example.authenticationapp.model.sylobe.Article;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class ArticleProxy extends DefaultHandler {
 
+
+    /**
+     * This class helps us to parse the received from sylob request to JSON
+     * The request which returns ARTICLES
+     */
+
     private final String LINE_RES_WS = "ligneResultatWS";
     private final String VALUE = "valeur";
 
-    private ArticleDocumentContent content = null;
-    private Article article = null;
     private StringBuilder builder = null;
     private int index;
+    private final JSONArray jsonArray = new JSONArray();
+    private JSONObject object = null;
 
     @Override
     public void characters(char[] ch, int start, int length) {
@@ -23,16 +30,12 @@ public class ArticleProxy extends DefaultHandler {
         }
     }
 
-    @Override
-    public void startDocument() {
-        content = new ArticleDocumentContent();
-    }
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes){
             switch (qName){
                 case LINE_RES_WS:
-                    article = new Article();
+                    object = new JSONObject();
                     index = 0;
                     break;
                 case VALUE:
@@ -46,47 +49,46 @@ public class ArticleProxy extends DefaultHandler {
     public void endElement(String uri, String localName, String qName){
             switch (qName){
                 case LINE_RES_WS:
-                    this.content.addArticle(article);
+                    jsonArray.add(object);
                     break;
 
                 case VALUE:
                         switch (index){
                             case 1:
-                                article.setArticleCode(builder.toString());
+                                object.put("articleCode", builder.toString());
                                 break;
                             case 2:
-                                article.setNumber(builder.toString());
+                                object.put("number", builder.toString());
                                 break;
                             case 3:
-                                article.setIndex(builder.toString());
+                                object.put("index", builder.toString());
                                 break;
                             case 4:
-                                article.setQuantity(Double.parseDouble(builder.toString()));
+                                object.put("quantity", builder.toString());
                                 break;
                             case 5:
-                                article.setValidityDate(builder.toString());
+                                object.put("validityDate", builder.toString());
                                 break;
                             case 6:
-                                article.setLabel(builder.toString());
+                                object.put("label", builder.toString());
                                 break;
                             case 7:
-                                article.setArticleStatus(builder.toString());
+                                object.put("articleStatus", builder.toString());
                                 break;
                             case 8:
-                                article.setCodeClient(builder.toString());
+                                object.put("codeClient", builder.toString());
                             case 9:
-                                article.setSocialReason(builder.toString());
+                                object.put("socialReason", builder.toString());
+                                break;
+                            case 10:
+                                object.put("name", builder.toString());
                                 break;
                         }
                     break;
             }
     }
 
-    public ArticleDocumentContent getContent() {
-        return content;
-    }
-
-    public Article getArticle() {
-        return article;
+    public JSONArray getJsonArray() {
+        return jsonArray;
     }
 }

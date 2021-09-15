@@ -1,5 +1,6 @@
 package com.example.authenticationapp.model.sylobe;
 
+import com.example.authenticationapp.model.user.User;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,31 +17,31 @@ import java.util.UUID;
 public class Voucher {
 
     private final UUID id;
-    private String description;
     private Set<Article> articles;
+    private User editor;
 
 
     /**
      * Constructor
-     * @param description Voucher description
      * Each Voucher contains a several articles
      */
-    public Voucher(String description) {
+    public Voucher() {
         this.id = UUID.randomUUID();
-        this.description = description;
         this.articles = new HashSet<>();
+        editor = null;
     }
 
     public UUID getId() {
         return id;
     }
 
-    public String getDescription() {
-        return description;
-    }
 
     public Set<Article> getArticles() {
         return articles;
+    }
+
+    public User getEditor() {
+        return editor;
     }
 
     public void addArticle(Article article){
@@ -51,17 +52,16 @@ public class Voucher {
         this.articles = articles;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setEditor(User editor) {
+        this.editor = editor;
     }
-
 
     @Override
     public String toString(){
         return "Voucher: {\n"+
                 "Id: "+this.getId()+"\n"+
-                "Description: "+this.getDescription()+"\n"+
                 "Articles: "+this.getArticles()+"\n"+
+                "Editor: "+this.getEditor()+"\n"+
                 "}";
     }
 
@@ -77,8 +77,9 @@ public class Voucher {
         Voucher voucher = (Voucher) obj;
 
         return  this.getId() == voucher.getId() &&
-                this.getDescription().equals(voucher.getDescription()) &&
-                this.getArticles() == voucher.getArticles();
+                this.getArticles() == voucher.getArticles() &&
+                this.getEditor().equals(voucher.getEditor())
+                ;
     }
 }
 

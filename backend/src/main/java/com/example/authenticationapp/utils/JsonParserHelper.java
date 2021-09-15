@@ -31,6 +31,10 @@ import java.util.*;
 public class JsonParserHelper {
 
     /**
+     * This class helps us to parse all our json objects
+     */
+
+    /**
      * Parse an Address json object and create an instance
      *
      * @param jsonObject Address json object
@@ -67,35 +71,37 @@ public class JsonParserHelper {
         return new Company(code, socialReason, clientType, label, countryCode, countryName, zipCode, city, recipient);
     }
 
-    public static List<Company> parseAndCreateCompanyListFromSylob(JSONObject jsonObject) {
+    /**
+     * This function parses a json array and creates our Company object list
+     * @param array companies
+     * @return
+     */
+    public static List<Company> parseAndCreateCompanyListFromSylob(JSONArray array) {
         List<Company> companyList = new ArrayList<>();
 
-        JSONArray lineResult = (JSONArray) jsonObject.get("ligneResultatWS");
+        Iterator<JSONObject> iterator = array.iterator();
 
-        Iterator<JSONObject> iterator = lineResult.iterator();
-
-        while (iterator.hasNext()) {
-            JSONArray jsonArray = (JSONArray) iterator.next().get("valeur");
-            companyList.add(new Company(
-                            jsonArray.get(0).toString(),
-                            jsonArray.get(1).toString(),
-                            jsonArray.get(2).toString(),
-                            jsonArray.get(3).toString(),
-                            jsonArray.get(4).toString(),
-                            jsonArray.get(5).toString(),
-                            jsonArray.get(6).toString(),
-                            jsonArray.get(7).toString(),
-                            jsonArray.get(8).toString()
-                    )
+        while (iterator.hasNext()){
+            JSONObject company = iterator.next();
+            companyList.add(
+              new Company(
+                      company.get("code").toString(),
+                      company.get("socialReason").toString(),
+                      company.get("clientType").toString(),
+                      company.get("label").toString(),
+                      company.get("countryCode").toString(),
+                      company.get("countryName").toString(),
+                      company.get("zipCode").toString(),
+                      company.get("city").toString(),
+                      company.get("recipient").toString()
+              )
             );
         }
-
         return companyList;
     }
 
     /**
-     * Parse an User json object and create an instance
-     *
+     * Parse a json User object and create an instance
      * @param jsonObject User json object
      * @return an instance of User
      */
@@ -118,49 +124,42 @@ public class JsonParserHelper {
                 : new Client(firstName, lastName, email, password, company);
     }
 
-    public static Set<Article> parseAndCreateArticleListFromSylob(JSONObject jsonObject) throws IOException {
+    /**
+     * This function parses a json array and creates our Article object list
+     * @param array articles
+     * @return
+     * @throws IOException
+     */
+        public static Set<Article> parseAndCreateArticles(JSONArray array) throws IOException {
         Set<Article> objectList = new HashSet<>();
-        if(jsonObject != null){
-            JSONArray lineResult = (JSONArray) jsonObject.get("ligneResultatWS");
-
-            Iterator<JSONObject> iterator = lineResult.iterator();
-
-            while (iterator.hasNext()) {
-                JSONArray jsonArray = (JSONArray) iterator.next().get("valeur");
-
-                objectList.add(
-                        new Article(
-                                    jsonArray.get(0).toString(),
-                                    jsonArray.get(1).toString(),
-                                    jsonArray.get(2).toString(),
-                                    Double.parseDouble(jsonArray.get(3).toString()),
-                                    jsonArray.get(4).toString(),
-                                    jsonArray.get(5).toString(),
-                                    jsonArray.get(6).toString(),
-                                    jsonArray.get(7).toString(),
-                                    jsonArray.get(8).toString(),
-                                    jsonArray.get(9).toString()
-                         )
-                );
-            }
-
-            return objectList;
+        Iterator<JSONObject> iterator = array.iterator();
+        while(iterator.hasNext()){
+            JSONObject article = iterator.next();
+            objectList.add(new Article(
+                    article.get("articleCode").toString(),
+                    article.get("number").toString(),
+                    article.get("index").toString(),
+                    Double.parseDouble(article.get("quantity").toString()),
+                    article.get("validityDate").toString(),
+                    article.get("label").toString(),
+                    article.get("articleStatus").toString(),
+                    article.get("codeClient").toString(),
+                    article.get("socialReason").toString(),
+                    article.get("name").toString()
+            ));
         }
-       return  null;
+
+        return  objectList;
     }
 
-    private static Photo createPhoto() throws IOException {
-        final File file = new File("C:\\Users\\mdiallo\\Desktop\\regularization-form-bis\\backend\\src\\main\\java\\com\\example\\authenticationapp\\model\\sylobe\\images\\ALTDP1.png");
-        InputStream stream =  new FileInputStream(file);
-        MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), MediaType.IMAGE_PNG_VALUE, stream);
-
-        Photo photo = new Photo();
-        photo.setName("test");
-        photo.setImage(new Binary(BsonBinarySubType.BINARY, multipartFile.getBytes()));
-
-        return photo;
-    }
-
+    /**
+     * This function parse a jSon object, which contains a list of articles.
+     * These articles are selected by the use for making a regularization voucher
+     * @param jsonObject
+     * @return
+     * @throws IOException
+     * @throws ParseException
+     */
     public static Set<Article> parseAndCreateArticlesForVoucher(Object jsonObject) throws IOException, ParseException {
         Set<Article> articles = new HashSet<>();
         JSONParser parser = new JSONParser();
@@ -169,47 +168,57 @@ public class JsonParserHelper {
         Iterator<JSONObject> iterator = array.iterator();
 
         while (iterator.hasNext()){
+
             JSONObject object = iterator.next();
-            articles.add(new Article(  object.get("articleCode").toString(),
+            Object quantity = object.get("neededQuantity");
+            String quantityStr = (quantity!=null) ? quantity.toString() : "1";
+            articles.add(new Article(object.get("articleCode").toString(),
                                     object.get("number").toString(),
                                     object.get("index").toString(),
-                                    Double.parseDouble(object.get("quantity").toString()),
+                                    Double.parseDouble(quantityStr),
                                     object.get("validityDate").toString(),
                                     object.get("label").toString(),
                                     object.get("articleStatus").toString(),
                                     object.get("codeClient").toString(),
                                     object.get("socialReason").toString(),
-//                                    object.get("name").toString()
-                    null
+                                    object.get("name").toString()
                                )
             );
-            System.out.println(object);
         }
         return articles;
     }
 
-    public static Set<Kit> parseAndCreateSylobKits(JSONObject jsonObject) {
+
+    /**
+     * This function parses a json array and creates our Kit object lis
+     * @param array
+     * @return List of Kit
+     */
+    public static Set<Kit> parseAndCreateSylobKits(JSONArray array) {
         Set<Kit> kitsList = new HashSet<>();
-        JSONArray lineResult = (JSONArray) jsonObject.get("ligneResultatWS");
 
-        Iterator<JSONObject> iterator = lineResult.iterator();
+        Iterator<JSONObject> iterator = array.iterator();
 
-        while (iterator.hasNext()) {
-            JSONArray jsonArray = (JSONArray) iterator.next().get("valeur");
-            kitsList.add(
-                    new Kit(
-                            jsonArray.get(0).toString(),
-                            jsonArray.get(1).toString(),
-                            jsonArray.get(2).toString(),
-                            jsonArray.get(3).toString()
-                    )
-            );
+        while (iterator.hasNext()){
+            JSONObject kit = iterator.next();
+            kitsList.add(new Kit(
+                    kit.get("label").toString(),
+                    kit.get("kitStatus").toString(),
+                    kit.get("clientCode").toString(),
+                    kit.get("socialReason").toString()
+            ));
         }
 
         return kitsList;
     }
 
-    public static Set<Article> parseStaticsArticles() throws IOException, ParseException {
+
+    /**
+     * These other functions are used for working with local data (instead of sylob)
+     * @return
+     * @throws IOException
+     */
+    public static Set<Article> parseStaticsArticles() throws IOException {
 
         Set<Article> articles = new HashSet<>();
         JSONObject object = SylobRequests.parseXmlLocalArticles();
@@ -261,7 +270,18 @@ public class JsonParserHelper {
             kits.add(kit);
         }
 
-        System.out.println(kits);
         return kits;
+    }
+
+    private static Photo createPhoto() throws IOException {
+        final File file = new File("C:\\Users\\mdiallo\\Desktop\\regularization-form-bis\\backend\\src\\main\\java\\com\\example\\authenticationapp\\model\\sylobe\\images\\ALTDP1.png");
+        InputStream stream =  new FileInputStream(file);
+        MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), MediaType.IMAGE_PNG_VALUE, stream);
+
+        Photo photo = new Photo();
+        photo.setName("test");
+        photo.setImage(new Binary(BsonBinarySubType.BINARY, multipartFile.getBytes()));
+
+        return photo;
     }
 }

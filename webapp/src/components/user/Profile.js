@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {APP_API} from "../helpers/AppRequests";
 import {helpers} from "../helpers/Helpers";
 import {userToken} from "../../App";
+import {Loader} from "semantic-ui-react";
 
 /**
  * Displays a User profile
@@ -10,7 +11,10 @@ class Profile extends Component {
 
     constructor(props) {
         super(props);
-        this.state = null
+        this.state = {
+            isLoading: true,
+            profile: null
+        }
     }
 
     async componentDidMount() {
@@ -19,14 +23,22 @@ class Profile extends Component {
          * @type {AxiosResponse<any>}
          */
         const request = await APP_API.getUserByEmail(helpers.getUserEmail(), userToken)
-        this.setState(request.data)
+        this.setState({profile: request.data, isLoading: false})
     }
 
     render() {
-        if (this.state === null) {
-            return "loading"
+        if (this.state.profile === null || this.state.isLoading) {
+            return (
+                <Loader
+                    type="Puff"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                    className="position-absolute top-50 start-50 translate-middle"
+                />
+            );
         } else {
-            const {firstName, lastName, email, roles, company} = this.state;
+            const {firstName, lastName, email, roles, company} = this.state.profile;
             return (
                 <div className="container-fluid">
                     <div className="row d-flex justify-content-center">

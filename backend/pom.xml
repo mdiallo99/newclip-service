@@ -13,6 +13,7 @@
 	<artifactId>authentication-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>authentication-app</name>
+
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -129,6 +130,7 @@
             <artifactId>android-json</artifactId>
             <version>0.0.20131108.vaadin1</version>
             <scope>compile</scope>
+			<optional>true</optional>
         </dependency>
 		<!-- https://mvnrepository.com/artifact/org.json/json -->
 		<dependency>
@@ -136,12 +138,6 @@
 			<artifactId>json</artifactId>
 			<version>20210307</version>
 		</dependency>
-        <dependency>
-            <groupId>com.vaadin.external.google</groupId>
-            <artifactId>android-json</artifactId>
-            <version>0.0.20131108.vaadin1</version>
-            <scope>compile</scope>
-        </dependency>
 		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
@@ -184,45 +180,46 @@
 			<artifactId>bcprov-jdk15on</artifactId>
 			<version>1.69</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>javax.mail-api</artifactId>
 			<version>1.6.2</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+		<!-- https://mvnrepository.com/artifact/javax.mail/mailapi -->
 		<dependency>
-			<groupId>com.sun.mail</groupId>
-			<artifactId>javax.mail</artifactId>
-			<version>1.6.2</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/javax.json/javax.json-api -->
-<!--		<dependency>-->
-<!--			<groupId>javax.json</groupId>-->
-<!--			<artifactId>javax.json-api</artifactId>-->
-<!--			<version>1.1.4</version>-->
-<!--		</dependency>-->
-		<!-- https://mvnrepository.com/artifact/org.glassfish/javax.json -->
-		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>javax.json</artifactId>
-			<version>1.1.4</version>
+			<groupId>javax.mail</groupId>
+			<artifactId>mailapi</artifactId>
+			<version>1.4.3</version>
 		</dependency>
 
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-mail</artifactId>-->
-<!--		</dependency>-->
+
+		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>3.0.3</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.mail</groupId>
+					<artifactId>mailapi</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
 		<dependency>
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations</artifactId>
 			<version>RELEASE</version>
 			<scope>compile</scope>
 		</dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-        </dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>

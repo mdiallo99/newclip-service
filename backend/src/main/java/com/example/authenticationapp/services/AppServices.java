@@ -42,7 +42,7 @@ public interface AppServices {
 
     Set<Article> saveSylobData(Set<Article> objectList);
 
-    Voucher addArticlesInVoucher(Set<Article> object);
+    Voucher addArticlesInVoucher(Set<Article> object, User editor);
 
     List<Kit> saveKitsFromSylob(Set<Kit> kits);
 

@@ -1,7 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {APP_API} from "../helpers/AppRequests";
 import {userToken} from "../../App";
-import {FormControl, InputGroup} from "react-bootstrap";
+import {useHistory} from "react-router-dom"
+import Loader from "react-loader-spinner";
+
 
 /**
  * displays a specific kit content (articles)
@@ -9,7 +11,21 @@ import {FormControl, InputGroup} from "react-bootstrap";
  * @returns {JSX.Element}
  * @constructor
  */
-function KitContent(props) {
+const  KitContent = (props) => {
+
+
+    let [articles, setArticles] = useState(null);
+    let [isLoading, setIsLoading] = useState(true)
+    let [isEmpty, setIsEmpty] = useState(true)
+
+    useEffect(async () => {
+        const response = await APP_API.getKitByLabel(props.match.params.kitLabel, userToken);
+        const result = await response.data;
+        setArticles(result)
+        setIsLoading(false)
+        setIsEmpty(result.length === 0)
+    }, [props.match.params.kitLabel])
+    let history = useHistory();
 
     const importImg = (code) => {
 
@@ -31,36 +47,52 @@ function KitContent(props) {
 
     const handleSubmit = (values) => {
         const response = APP_API.addArticlesInVouchar(values, userToken);
-              response.then(res => {
-                  console.log("submit response: ", res.data)
-              }).catch(error => {
-                  console.error(error)
-              })
+        response.then(res => {
+
+        }).catch(error => {
+        })
     }
 
-    const {location} = props
-    const {articles} = location.state.kit
 
-    if (articles && articles.length > 0) {
+    if (isLoading) {
+        return (
+            <Loader
+                type="Puff"
+                color="#00BFFF"
+                height={100}
+                width={100}
+                className="position-absolute top-50 start-50 translate-middle"
+            />
+        );
+    } else if(isEmpty){
+        return (
+            <div className="position-absolute top-50 start-50 translate-middle">
+                <h3>Ce kit est vide</h3>
+            </div>
+        )
+    } else {
 
         let selectedArticles = []
         return (
             <>
                 <div className="col-12 text-center mb-3 my-sticky">
-                    <h3>LISTE DES ARTICLES DU KIT : {location.state.kit.label}</h3>
-                        <button type="button"
-                                id="finish"
-                                name="finish"
-                                onClick={() => {
-                                    handleSubmit(JSON.stringify(selectedArticles))
-                                    console.log(selectedArticles)
-                                }}
-                                className="btn btn-success btn-lg btn-block"> Valider
-                        </button>
+                    <button type="button"
+                            id="finish"
+                            name="finish"
+                            onClick={() => {
+                                handleSubmit(JSON.stringify(selectedArticles))
+                                alert("Voucher edited and sent by email successfully !")
+                                history.push("/profile")
+                            }}
+                            className="btn btn-success btn-lg btn-block"
+                    > Valider
+                    </button>
 
-                </div> <br/>
+                </div>
+                <br/>
                 <div className="container-fluid">
                     <div className="row">
+
                         {articles.map((article, idx) => (
                             <div className="col-12 col-md-6" key={idx}>
                                 <div className="card mb-3">
@@ -73,48 +105,56 @@ function KitContent(props) {
                                         <div className="col-9">
                                             <div className="card-body">
                                                 <strong> {" " + article.articleCode} </strong>
-                                                {/*<p className="card-text">*/}
-                                                {/*     {" " + article.name}*/}
-                                                {/*</p>*/}
                                                 <p className="card-text">NUMERO DE LOT:
                                                     <strong> {" " + article.number} </strong>
                                                 </p>
-                                                <p className="card-text">QUANTITE :
+                                                <p className="card-text">QTE EN STOCK:
                                                     <strong> {" " + article.quantity} </strong>
                                                 </p>
                                                 <p className="card-text">DATE DE VALIDITE :
                                                     <strong> {" " + article.validityDate} </strong>
                                                 </p>
                                             </div>
-                                            <div className="btn-secondary col-sm-2">
+                                            <div className="btn-secondary col-sm-3">
                                                 <input type="checkbox"
                                                        id={idx}
                                                        onClick={() => {
-                                                                    const cb = document.getElementById(idx);
-                                                                    if(cb.checked){
-                                                                        selectedArticles.push(article)
-                                                                    }else{
-                                                                        selectedArticles = removeElem(selectedArticles, article)
-                                                                    }
-                                                                    console.log("checked: "+cb.checked+ " "+idx)
-                                                            }
+                                                           const cb = document.getElementById(idx);
+                                                           if (cb.checked) {
+                                                               selectedArticles.push(article)
+                                                           } else {
+                                                               selectedArticles = removeElem(selectedArticles, article)
+                                                           }
+                                                       }
                                                        }
                                                 />
-                                                <label htmlFor="add">Add</label>
+                                                <label htmlFor="add">Ajouter</label>
+                                                <input type="number"
+                                                       placeholder="Qte en besoin"
+                                                       min="1"
+                                                       name="neededQuantity"
+                                                       id={idx + "qte"}
+                                                       defaultValue="1"
+                                                       max={article.quantity}
+
+                                                       onChange={() => {
+                                                           article["neededQuantity"] = document.getElementById(idx + "qte").value
+                                                       }}
+                                                />
                                             </div>
+                                            <br/>
+
                                         </div>
-                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
-
-                        ))}
+                        ))
+                        }
                     </div>
                 </div>
             </>
         )
-    } else {
-        return <div>Ce kit est vide !</div>
     }
 }
 

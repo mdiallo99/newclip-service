@@ -8,7 +8,6 @@ import org.keycloak.adapters.springsecurity.management.HttpSessionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -26,6 +25,10 @@ import static com.example.authenticationapp.utils.Constants.*;
 @KeycloakConfiguration
 public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
+    /**
+     *  This class configures and manages Keycloak Security
+     */
+
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception {
         super.configure(httpSecurity);
@@ -40,9 +43,8 @@ public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
                     .antMatchers(HttpMethod.POST, ADD_USER_ENDPOINT).hasAnyRole(ADMIN)
                     .antMatchers(HttpMethod.DELETE, DELETE_ADDRESS_ENDPOINT).hasAnyRole(ADMIN)
                     .antMatchers(HttpMethod.GET, FIND_DELETE_ADDRESS_ENDPOINT).hasAnyRole(ADMIN)
-    //                .antMatchers(HttpMethod.DELETE, FIND_DELETE_ADDRESS_ENDPOINT).hasAnyRole(ADMIN)
                     .antMatchers(HttpMethod.GET, USER_PROFILE_ENDPOINT).hasAnyRole(ADMIN,USER)
-                    .antMatchers(HttpMethod.GET, SYLOB_BACKEND_ENDPOINT).hasAnyRole(ADMIN, USER)
+                    .antMatchers(HttpMethod.GET, SYLOB_ARTICLES_LIST_ENDPOINT).hasAnyRole(ADMIN, USER)
                     .antMatchers(HttpMethod.GET, SYLOB_DATA_ENDPOINT).hasAnyRole(ADMIN,USER)
                     .antMatchers(HttpMethod.GET, SYLOB_COMPANY_LIST_ENDPOINT).hasAnyRole(ADMIN,USER)
                     .antMatchers(HttpMethod.POST, ADD_SYLOB_ARTICLE_ENDPOINT).hasAnyRole(ADMIN, USER)
@@ -50,6 +52,7 @@ public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
                     .antMatchers(HttpMethod.GET, FIND_KIT_BY_LABEL_ENDPOINT).hasAnyRole(ADMIN, USER)
                     .antMatchers(HttpMethod.GET, DELETE_SYLOB_ARTICLE_ENDPOINT).hasAnyRole(ADMIN, USER)
                     .antMatchers(HttpMethod.POST, ADD_IMAGE_ENDPOINT).hasAnyRole(ADMIN, USER)
+                    .antMatchers(HttpMethod.GET, PROXY_USER_LIST_ENDPOINT).hasAnyRole(ADMIN)
                     .antMatchers(HttpMethod.GET, SWAGGER_CONFIG_URL, SWAGGER_UI_URL, SWAGGER_DOC_URL, SWAGGER_DOCS_URL).permitAll()
                     .anyRequest().authenticated();
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
